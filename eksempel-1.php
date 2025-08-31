@@ -7,5 +7,5 @@
   $fornavn=$_POST ["fornavn"];
   $etternavn=$_POST ["etternavn"];  
 
-  print ("Hi<br />");  
+  print ("God Dag $fornavn $etternavn!");  
 ?>
