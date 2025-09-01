@@ -4,7 +4,7 @@
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for mobile devices -->
-  <title>Oppgave 2: Skjema</title> <!-- Updated title for clarity and consistency -->
+  <title>oppgave 2</title> <!-- Title shown in the browser tab -->
   <style>
     /* Styling for the entire page */
     body {
@@ -47,20 +47,12 @@
       margin-bottom: 15px; /* Adds space below inputs */
       border: 2px solid #ccc; /* Light gray border */
       border-radius: 4px; /* Rounds input corners */
-      box-sizing: border-box; /* Ensures padding doesn’t increase width */
-    }
-
-    /* Focus style for inputs for accessibility */
-    input[type="text"]:focus,
-    input[type="number"]:focus {
-      border-color: #5cb85c; /* Green border when input is focused */
-      outline: none; /* Removes default browser outline */
     }
 
     /* Styling for submit and reset buttons */
     input[type="submit"],
     input[type="reset"] {
-      background-color: #5cb85c; /* Green background for submit button */
+      background-color: #5cb85c; /* Green background for buttons */
       color: white; /* White text color */
       border: none; /* Removes default border */
       padding: 10px 15px; /* Adds internal spacing */
@@ -69,7 +61,6 @@
       width: 45%; /* Sets button width for better spacing */
       margin: 5px; /* Adds space around buttons */
       display: inline-block; /* Makes buttons sit side by side */
-      box-sizing: border-box; /* Ensures padding doesn’t increase width */
     }
 
     /* Specific styling for the reset button */
@@ -82,22 +73,16 @@
     input[type="reset"]:hover {
       opacity: 0.9; /* Fades buttons slightly on hover for feedback */
     }
-
-    /* Focus style for buttons for accessibility */
-    input[type="submit"]:focus,
-    input[type="reset"]:focus {
-      outline: 2px solid #333; /* Adds outline when buttons are focused */
-    }
   </style>
-</head>
+</head></ul>
 <body>
   <!-- Visible content of the page -->
-  <h3>Sett inn de etterspurte dataene</h3> <!-- Displays instruction as a centered heading -->
+  <h3>Sett inn de etterspurte dataene</h3> <!-- Displays "Eksempel 1" as a centered heading -->
 
   <!-- Form for collecting user input -->
-  <form method="post" action="oppgave02.php" id="oppgave02" name="oppgave02">
+  <form method="post" action="tema01/oppgave02/oppgave02.php" id="oppgave02" name="oppgave02">
     <!-- method="post": Sends data securely to server -->
-    <!-- action="oppgave02.php": Points to PHP file for form processing -->
+    <!-- action="eksempel-1.php": Points to PHP file for form processing -->
     <!-- id and name: Identifiers for JavaScript/CSS -->
 
     <!-- First name field -->
@@ -109,10 +94,10 @@
     <label for="etternavn">Etternavn</label> <!-- Label for last name -->
     <input type="text" id="etternavn" name="etternavn" required placeholder="Skriv inn etternavn" /> <!-- Text input for last name -->
 
-    <!-- Age field -->
+    <!-- Age field (new) -->
     <label for="alder">Alder</label> <!-- Label for age -->
     <input type="number" id="alder" name="alder" required min="0" max="100" placeholder="Skriv inn alder" /> <!-- Number input for age -->
-    <!-- type="number": Allows only numbers; min="0" and max="100": Restricts age range -->
+    <!-- type="number": Allows only numbers; min="0": Prevents negative numbers -->
 
     <!-- Submit and reset buttons -->
     <input type="submit" value="Fortsett" id="fortsett" name="fortsett" /> <!-- Submits form data -->
