@@ -1,76 +1,77 @@
-<!DOCTYPE html> <!-- Declares the document as HTML5, ensuring browsers use modern standards -->
+<!DOCTYPE html> <!-- Declares the document as HTML5 for modern browser standards -->
 <html lang="no"> <!-- Root element, sets language to Norwegian for accessibility and SEO -->
 <head>
   <!-- Metadata section for page settings and resources -->
-  <meta charset="UTF-8"> <!-- Sets character encoding to support special characters like æ, ø, å -->
+  <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for mobile devices -->
-  <title>Eksempel 1</title> <!-- Sets the title shown in the browser tab -->
+  <title>Eksempel 1</title> <!-- Title shown in the browser tab -->
   <style>
-    /* Styling for the entire page (body) */
+    /* Styling for the entire page */
     body {
-      font-family: Arial, sans-serif; /* Sets font to Arial, falls back to sans-serif if unavailable */
-      background-color: #ffffff; /* Light gray background for the page */
+      font-family: Arial, sans-serif; /* Sets font to Arial or a sans-serif fallback */
+      background-color: #f4f4f4; /* Light gray background */
       margin: 0; /* Removes default margins */
-      padding: 20px; /* Adds space around the content */
+      padding: 20px; /* Adds space around content */
     }
 
     /* Styling for the heading */
     h3 {
       color: #333; /* Dark gray text color */
-      text-align: center; /* Centers the heading text */
+      text-align: center; /* Centers the heading */
     }
 
     /* Styling for the form container */
     form {
       background-color: #fff; /* White background for the form */
-      border-radius: 10px; /* Rounds the corners of the form */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+      border-radius: 8px; /* Rounds corners for a smooth look */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
       padding: 20px; /* Adds internal spacing */
-      max-width: 400px; /* Limits the form width for readability */
+      max-width: 400px; /* Limits form width for readability */
       margin: 0 auto; /* Centers the form horizontally */
-      text-align: center; /* Centers form elements (labels, inputs, buttons) */
+      text-align: center; /* Centers form elements */
     }
 
-    /* Styling for labels (text above input fields) */
+    /* Styling for labels */
     label {
-      display: block; /* Makes labels stack vertically above inputs */
-      margin-bottom: 8px; /* Adds space below each label */
-      font-weight: bold; /* Makes the label text bold */
-      text-align: center; /* Centers the label text */
+      display: block; /* Stacks labels vertically above inputs */
+      margin-bottom: 8px; /* Adds space below labels */
+      font-weight: bold; /* Makes label text bold */
+      text-align: center; /* Centers label text */
     }
 
-    /* Styling for text input fields */
-    input[type="text"] {
-      width: 90%; /* Sets input width to 90% of the form's width */
-      padding: 10px; /* Adds internal spacing for comfort */
-      margin-bottom: 15px; /* Adds space below each input */
-      border: 2px solid #ccc; /* Adds a light gray border */
-      border-radius: 4px; /* Rounds the corners of the input fields */
+    /* Styling for text and number input fields */
+    input[type="text"],
+    input[type="number"] {
+      width: 90%; /* Sets input width to 90% of form width */
+      padding: 10px; /* Adds internal spacing */
+      margin-bottom: 15px; /* Adds space below inputs */
+      border: 2px solid #ccc; /* Light gray border */
+      border-radius: 4px; /* Rounds input corners */
     }
 
     /* Styling for submit and reset buttons */
     input[type="submit"],
     input[type="reset"] {
-      background-color: #2d932d; /* Green background for buttons */
+      background-color: #5cb85c; /* Green background for buttons */
       color: white; /* White text color */
       border: none; /* Removes default border */
-      padding: 10px 15px; /* Adds internal spacing (vertical, horizontal) */
+      padding: 10px 15px; /* Adds internal spacing */
       border-radius: 4px; /* Rounds button corners */
-      cursor: pointer; /* Shows a pointer when hovering */
-      width: 45%; /* Sets button width to 45% for better spacing */
+      cursor: pointer; /* Shows pointer on hover */
+      width: 45%; /* Sets button width for better spacing */
       margin: 5px; /* Adds space around buttons */
       display: inline-block; /* Makes buttons sit side by side */
     }
 
     /* Specific styling for the reset button */
     input[type="reset"] {
-      background-color: #9d2521; /* Red background for reset button */
+      background-color: #d9534f; /* Red background for reset button */
     }
 
-    /* Hover effect for both buttons */
+    /* Hover effect for buttons */
     input[type="submit"]:hover,
     input[type="reset"]:hover {
-      opacity: 0.9; /* Slightly fades the button when hovered for visual feedback */
+      opacity: 0.9; /* Fades buttons slightly on hover for feedback */
     }
   </style>
 </head>
@@ -80,25 +81,27 @@
 
   <!-- Form for collecting user input -->
   <form method="post" action="eksempel-1.php" id="eksempel1" name="eksempel1">
-    <!-- method="post": Sends data securely to the server -->
-    <!-- action="eksempel-1.php": Specifies the PHP file to process form data -->
-    <!-- id and name: Identifiers for JavaScript or CSS targeting -->
+    <!-- method="post": Sends data securely to server -->
+    <!-- action="eksempel-1.php": Points to PHP file for form processing -->
+    <!-- id and name: Identifiers for JavaScript/CSS -->
 
-    <!-- Label and input for first name -->
-    <label for="fornavn">Fornavn</label> <!-- Text describing the first name field -->
-    <input type="text" id="fornavn" name="fornavn" required /> <!-- Text field for first name -->
-    <!-- id: Links to label; name: Used for form submission; required: Prevents empty submission -->
+    <!-- First name field -->
+    <label for="fornavn">Fornavn</label> <!-- Label for first name -->
+    <input type="text" id="fornavn" name="fornavn" required /> <!-- Text input for first name -->
+    <!-- id: Links to label; name: Used for form submission; required: Ensures field isn't empty -->
 
-    <!-- Label and input for last name -->
-    <label for="etternavn">Etternavn</label> <!-- Text describing the last name field -->
-    <input type="text" id="etternavn" name="etternavn" required /> <!-- Text field for last name -->
+    <!-- Last name field -->
+    <label for="etternavn">Etternavn</label> <!-- Label for last name -->
+    <input type="text" id="etternavn" name="etternavn" required /> <!-- Text input for last name -->
 
-    <!-- Submit button to send form data -->
-    <input type="submit" value="Fortsett" id="fortsett" name="fortsett" /> <!-- Submits form to eksempel-1.php -->
-    <!-- value: Text on the button; id and name: Identifiers -->
+    <!-- Age field (new) -->
+    <label for="alder">Alder</label> <!-- Label for age -->
+    <input type="number" id="alder" name="alder" required min="0" /> <!-- Number input for age -->
+    <!-- type="number": Allows only numbers; min="0": Prevents negative numbers -->
 
-    <!-- Reset button to clear form inputs -->
-    <input type="reset" value="Nullstill" name="nullstill" id="nullstill" /> <!-- Resets form fields to default -->
+    <!-- Submit and reset buttons -->
+    <input type="submit" value="Fortsett" id="fortsett" name="fortsett" /> <!-- Submits form data -->
+    <input type="reset" value="Nullstill" name="nullstill" id="nullstill" /> <!-- Clears form inputs -->
   </form>
 </body>
 </html>
