@@ -1,10 +1,16 @@
 <?php
-//    Programmet mottar fra et HTML-skjema et fornavn og et etternavn ved POST-metoden
-//   Programmet skriver ut en "god dag"-melding med personens navn 
+//    Programmet mottar fra et HTML-skjema to tall ved POST-metoden
+//   Programmet skriver ut summen og differansen ved bruk av begge tallene
 
-  $fornavn=$_POST ["fornavn"];
-  $etternavn=$_POST ["etternavn"];  
-  $alder=$_POST ["alder"];
+  $tall01=$_POST ["tall01"];
+  $tall02=$_POST ["tall02"];  
 
-  print("God Dag $fornavn $etternavn, du er $alder år og like sprek! \n");
+  $summen=$tall01+$tall02;
+  $differeanse=$tall01+$tall02;
+
+  print("Tall 1 er $tall01 <br />");
+  print("Tall 2 er $tall02 <br />");
+  print("<br />");
+  print("Summen er $summen <br />")
+  print("Differansen er $differanse <br />")
 ?>
