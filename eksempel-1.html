@@ -87,16 +87,16 @@
 
     <!-- First name field -->
     <label for="fornavn">Fornavn</label> <!-- Label for first name -->
-    <input type="text" id="fornavn" name="fornavn" required /> <!-- Text input for first name -->
+    <input type="text" id="fornavn" name="fornavn" required placeholder="Skriv inn fornavn" /> <!-- Text input for first name -->
     <!-- id: Links to label; name: Used for form submission; required: Ensures field isn't empty -->
 
     <!-- Last name field -->
     <label for="etternavn">Etternavn</label> <!-- Label for last name -->
-    <input type="text" id="etternavn" name="etternavn" required /> <!-- Text input for last name -->
+    <input type="text" id="etternavn" name="etternavn" required placeholder="Skriv inn etternavn" /> <!-- Text input for last name -->
 
     <!-- Age field (new) -->
     <label for="alder">Alder</label> <!-- Label for age -->
-    <input type="number" id="alder" name="alder" required min="0" /> <!-- Number input for age -->
+    <input type="number" id="alder" name="alder" required min="0" max="100" placeholder="Skriv inn alder" /> <!-- Number input for age -->
     <!-- type="number": Allows only numbers; min="0": Prevents negative numbers -->
 
     <!-- Submit and reset buttons -->
