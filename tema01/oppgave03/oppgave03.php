@@ -11,6 +11,6 @@
   print("Tall 1 er $tall01 <br />");
   print("Tall 2 er $tall02 <br />");
   print("<br />");
-  print("Summen er $summen <br />")
-  print("Differansen er $differanse <br />")
+  print("Summen er $summen <br />");
+  print("Differansen er $differanse <br />");
 ?>
