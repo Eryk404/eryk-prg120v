@@ -4,7 +4,7 @@
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for mobile devices -->
-  <title>oppgave 2</title> <!-- Title shown in the browser tab -->
+  <title>oppgave 1</title> <!-- Title shown in the browser tab -->
   <style>
     /* Styling for the entire page */
     body {
@@ -77,10 +77,10 @@
 </head></ul>
 <body>
   <!-- Visible content of the page -->
-  <h3>Sett inn de etterspurte dataene</h3> <!-- Displays "Eksempel 1" as a centered heading -->
+  <h3>Sett inn ditt navn og etternavn</h3> <!-- Displays "Eksempel 1" as a centered heading -->
 
   <!-- Form for collecting user input -->
-  <form method="post" action="tema01/oppgave02/oppgave02.php" id="oppgave02" name="oppgave02">
+  <form method="post" action="tema01/oppgave01/oppgave01.php" id="oppgave01" name="oppgave01">
     <!-- method="post": Sends data securely to server -->
     <!-- action="eksempel-1.php": Points to PHP file for form processing -->
     <!-- id and name: Identifiers for JavaScript/CSS -->
@@ -93,11 +93,6 @@
     <!-- Last name field -->
     <label for="etternavn">Etternavn</label> <!-- Label for last name -->
     <input type="text" id="etternavn" name="etternavn" required placeholder="Skriv inn etternavn" /> <!-- Text input for last name -->
-
-    <!-- Age field (new) -->
-    <label for="alder">Alder</label> <!-- Label for age -->
-    <input type="number" id="alder" name="alder" required min="0" max="100" placeholder="Skriv inn alder" /> <!-- Number input for age -->
-    <!-- type="number": Allows only numbers; min="0": Prevents negative numbers -->
 
     <!-- Submit and reset buttons -->
     <input type="submit" value="Fortsett" id="fortsett" name="fortsett" /> <!-- Submits form data -->
