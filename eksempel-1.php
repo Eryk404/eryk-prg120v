@@ -6,6 +6,6 @@
   $etternavn=$_POST ["etternavn"];  
   $alder=$_POST ["alder"];
 
-  print("God Dag $fornavn $etternavn!");
+  print("God Dag $fornavn $etternavn! \n");
   print("Alderen din er $alder, det er fortsatt veldig ungt!");
 ?>
