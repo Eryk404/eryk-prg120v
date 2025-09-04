@@ -29,7 +29,7 @@
     }
   else
     {
-      print("Du har ikke svart ja eller nei på begge spørsmålene")
+      print("Du har ikke svart ja eller nei på begge spørsmålene");
     }
 
 ?>
