@@ -2,8 +2,14 @@
 //    Programmet mottar fra et HTML-skjema et fornavn og et etternavn ved POST-metoden
 //   Programmet skriver ut en "god dag"-melding med personens navn 
 
-  $fornavn=$_POST ["fornavn"];
-  $etternavn=$_POST ["etternavn"];  
+  $tall=$_POST ["tall"];
 
-  print("God Dag $fornavn $etternavn!");
+  if(tall == 9)
+  {
+   print("Riktig! 3 ganger 3 er 9")
+  }
+  else()
+  {
+    print("Feil... 3 ganger 3 er ikke $tall")
+  }
 ?>
