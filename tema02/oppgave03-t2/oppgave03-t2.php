@@ -2,24 +2,23 @@
 
   $student = $_POST["student"];
 
+  if(!$student)
+  {
+    print("Du har ikke svart på spørsmålet om du er student");
+  }
+
   // Check for yes responses
-  if ($student == 'j' || $student == 'J' || $student == 'ja' || $student == 'JA' || $student == 'Ja') 
+  else if ($student == "j" || $student == "J" || $student == "ja" || $student == "JA" || $student == "Ja") 
     {
       print("Du har svart ja på spørsmålet om du er student");
     } 
 
   // Check for no responses
-  else if ($student == 'n' || $student == 'N' || $student == 'nei' || $student == 'NEI' || $student == 'Nei') 
+  else if ($student == "n" || $student == "N" || $student == "nei" || $student == "NEI" || $student == "Nei") 
     {
       print("Du har svart nei på spørsmålet om du er student");
     } 
-
-  // Check for empty input
-  else if ($student == '') 
-    {
-      print("Du har ikke svart på spørsmålet om du er student");
-    } 
-
+    
   // Handle invalid responses
   else 
     {
