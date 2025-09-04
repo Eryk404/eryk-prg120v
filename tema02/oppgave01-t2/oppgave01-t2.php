@@ -4,7 +4,7 @@
 
   $tall=$_POST["tall"];
 
-  if($talltall == 9)
+  if($tall == 9)
     {
       print("Riktig! 3 ganger 3 er 9");
     }
