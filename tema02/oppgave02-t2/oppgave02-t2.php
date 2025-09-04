@@ -2,15 +2,15 @@
 
   $student=$_POST["student"];
 
-  if($student == j)
+  if($student == 'j')
     {
       print("Du har svart ja på spørsmålet om du er student");
     }
-  else if($student == n)
+  else if($student == 'n')
     {
       print("Du har svart nei på spørsmålet om du er student");
     }
-  else if($student ! j or ! n)
+  else if($student != 'j' or != 'n')
     {
       print("Du har ikke svart ja eller nei på spørsmålet om du er student");
     }
