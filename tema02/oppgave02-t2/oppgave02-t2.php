@@ -10,7 +10,7 @@
     {
       print("Du har svart nei på spørsmålet om du er student");
     }
-  else if($student != 'j' && != 'n')
+  else if($student != 'j' or $student != 'n')
     {
       print("Du har ikke svart ja eller nei på spørsmålet om du er student");
     }
