@@ -91,7 +91,7 @@
           } 
           else 
           {
-            $message = "Feil... 3 ganger 3 er ikke $svar";
+            $message = "Feil... 3 ganger 3 er ikke $tall";
           }
       }
   ?>
