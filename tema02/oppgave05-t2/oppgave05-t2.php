@@ -28,7 +28,7 @@
         break;
     }
 
-  if(!$tall01 || !$tall02 || $regneoperasjon)
+  if(!$tall01 && !$tall02 && !$regneoperasjon)
     {
       print("Du har ikke svart på spørsmålene");
     }
