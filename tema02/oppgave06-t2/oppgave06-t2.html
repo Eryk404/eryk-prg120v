@@ -1,0 +1,101 @@
+<!DOCTYPE html> <!-- Declares the document as HTML5 for modern browser standards -->
+<html lang="no"> <!-- Root element, sets language to Norwegian for accessibility and SEO -->
+<head>
+  <!-- Metadata section for page settings and resources -->
+  <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for mobile devices -->
+  <title>oppgave 6</title> <!-- Title shown in the browser tab -->
+  <style>
+    /* Styling for the entire page */
+    body {
+      font-family: Arial, sans-serif; /* Sets font to Arial or a sans-serif fallback */
+      background-color: #f4f4f4; /* Light gray background */
+      margin: 0; /* Removes default margins */
+      padding: 20px; /* Adds space around content */
+    }
+
+    /* Styling for the heading */
+    h3 {
+      color: #333; /* Dark gray text color */
+      text-align: center; /* Centers the heading */
+    }
+
+    /* Styling for the form container */
+    form {
+      background-color: #fff; /* White background for the form */
+      border-radius: 8px; /* Rounds corners for a smooth look */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+      padding: 20px; /* Adds internal spacing */
+      max-width: 400px; /* Limits form width for readability */
+      margin: 0 auto; /* Centers the form horizontally */
+      text-align: center; /* Centers form elements */
+    }
+
+    /* Styling for labels */
+    label {
+      display: block; /* Stacks labels vertically above inputs */
+      margin-bottom: 8px; /* Adds space below labels */
+      font-weight: bold; /* Makes label text bold */
+      text-align: center; /* Centers label text */
+    }
+
+    /* Styling for text and number input fields */
+    input[type="text"],
+    input[type="number"] {
+      width: 90%; /* Sets input width to 90% of form width */
+      padding: 10px; /* Adds internal spacing */
+      margin-bottom: 15px; /* Adds space below inputs */
+      border: 2px solid #ccc; /* Light gray border */
+      border-radius: 4px; /* Rounds input corners */
+    }
+
+    /* Styling for submit and reset buttons */
+    input[type="submit"],
+    input[type="reset"] {
+      background-color: #5cb85c; /* Green background for buttons */
+      color: white; /* White text color */
+      border: none; /* Removes default border */
+      padding: 10px 15px; /* Adds internal spacing */
+      border-radius: 4px; /* Rounds button corners */
+      cursor: pointer; /* Shows pointer on hover */
+      width: 45%; /* Sets button width for better spacing */
+      margin: 5px; /* Adds space around buttons */
+      display: inline-block; /* Makes buttons sit side by side */
+    }
+
+    /* Specific styling for the reset button */
+    input[type="reset"] {
+      background-color: #d9534f; /* Red background for reset button */
+    }
+
+    /* Hover effect for buttons */
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      opacity: 0.9; /* Fades buttons slightly on hover for feedback */
+    }
+  </style>
+</head></ul>
+<body>
+  <!-- Visible content of the page -->
+  <h3>Vennligst velg to tall</h3> <!-- Displays "Vennligst velg to tall" as a centered heading -->
+
+  <!-- Form for collecting user input -->
+  <form method="post" action="tema02/oppgave06-t2/oppgave06-t2.php" id="oppgave06-t2" name="oppgave06-t2">
+    <!-- method="post": Sends data securely to server -->
+    <!-- action="oppgave02-t2.php": Points to PHP file for form processing -->
+    <!-- id and name: Identifiers for JavaScript/CSS -->
+
+    <!-- tall01 field -->
+    <label for="tall01">Tall 1</label> <!-- Label for tall01 -->
+    <input type="text" id="tall01" name="tall01" placeholder="Velg et tall" /> <!-- Text input for first field -->
+
+    <!-- tall02 field -->
+    <label for="tall02">Tall 2</label> <!-- Label for tall02 -->
+    <input type="text" id="tall02" name="tall02" placeholder="Velg et tall" /> <!-- Text input for second field -->
+
+    <!-- Submit and reset buttons -->
+    <input type="submit" value="Fortsett" id="fortsett" name="fortsett" /> <!-- Submits form data -->
+    <input type="reset" value="Nullstill" name="nullstill" id="nullstill" /> <!-- Clears form inputs -->
+  </form>
+</body>
+</html>
