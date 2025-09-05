@@ -6,7 +6,7 @@
   $regneprint = 0;
   $svar = 0;
 
-  if($regneoperasjon != 1 && !=2 && !=3 && != 4)
+  if($regneoperasjon != 1 && $regneoperasjon != 2 && $regneoperasjon != 3 && $regneoperasjon != 4)
   {
     print("Feil regneoperasjons tall <br/>");
   }
