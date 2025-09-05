@@ -4,9 +4,9 @@
   $tall02=$_POST["tall02"];
   $tall03=$_POST["tall03"];
 
-  Print("Tall 1 er $tall01 <br/>")
-  Print("Tall 2 er $tall02 <br/>")
-  Print("Tall 3 er $tall03 <br/>")
+  Print("Tall 1 er $tall01 <br/>");
+  Print("Tall 2 er $tall02 <br/>");
+  Print("Tall 3 er $tall03 <br/>");
 
   if ($tall01 == $tall02)
   {
