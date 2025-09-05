@@ -3,7 +3,7 @@
   $tall01=$_POST["tall01"];
   $tall02=$_POST["tall02"];
   $regneoperasjon=$_POST["regneoperasjon"];
-  $regneprint = 0;
+  $regneprint = "";
   $svar = 0;
 
   if($regneoperasjon != 1 && $regneoperasjon != 2 && $regneoperasjon != 3 && $regneoperasjon != 4)
