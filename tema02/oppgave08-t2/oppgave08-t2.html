@@ -84,14 +84,14 @@
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") 
       {
-          $tall = $_POST["tall"];
+          $tall = $_POST["svar"];
           if ($tall == 9) 
           {
             $message = "Riktig! 3 ganger 3 er 9";
           } 
           else 
           {
-            $message = "Feil... 3 ganger 3 er ikke $tall";
+            $message = "Feil... 3 ganger 3 er ikke $svar";
           }
       }
   ?>
