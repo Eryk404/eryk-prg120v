@@ -16,15 +16,19 @@
     {
       case 1:
         $svar = $tall01 + $tall02;
+        $regneprint = "Addisjon";
         break;
       case 2:
         $svar = $tall01 - $tall02;
+        $regneprint = "Subtraksjon";
         break;
       case 3:
         $svar = $tall01 * $tall02;
+        $regneprint = "Multiplikasjon";
         break;
       case 4:
         $svar = $tall01 / $tall02;
+        $regneprint = "Divisjon";
         break;
     }
 
@@ -32,30 +36,12 @@
     {
       print("Du har ikke svart på spørsmålene");
     }
-
-    if($regneoperasjon = 1)
-    {
-      $regneprint = "Addisjon";
-    }
-    elseif($regneoperasjon = 2)
-    {
-      $regneprint = "Subtraksjon";
-    }
-    elseif($regneoperasjon = 3)
-    {
-      $regneprint = "Multiplikasjon";
-    }
-    elseif($regneoperasjon = 4)
-    {
-      $regneprint = "Divisjon";
-    }
-
-    else
-    {
-      print("Tall 1 er $tall01 <br/>");
-      print("Tall 2 er $tall02 <br/>");
-      print("Regneoperasjon er $regneprint <br/>");
-      print("Resultatet av regneoperasjonen er $svar <br/>");
-    }
+  else
+  {
+    print("Tall 1 er $tall01 <br/>");
+    print("Tall 2 er $tall02 <br/>");
+    print("Regneoperasjon er $regneprint <br/>");
+    print("Resultatet av regneoperasjonen er $svar <br/>");
   }
+}
 ?>
