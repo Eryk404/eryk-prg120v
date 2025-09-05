@@ -7,7 +7,7 @@
   Print("Tall 1 er $tall01 <br/>");
   Print("Tall 2 er $tall02 <br/>");
   Print("Tall 3 er $tall03 <br/>");
-  Print("<br/>")
+  Print("<br/>");
 
   if ($tall01 == $tall02)
   {
