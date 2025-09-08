@@ -4,20 +4,20 @@ $tall = 1;
 
 for($tall<=10; $tall++)
 {
-  print("$tall ")
+  print("$tall ");
 }
-print("<br/> ")
+print("<br/> ");
 
 for($tall<=20; $tall++)
 {
-  print("$tall ")
+  print("$tall ");
 }
-print("<br/> ")
+print("<br/> ");
 
 for($tall<=30; $tall++)
 {
-  print("$tall ")
+  print("$tall ");
 }
-print("<br/> ")
+print("<br/> ");
 
 ?>
