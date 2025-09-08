@@ -6,7 +6,7 @@ $kvadraten;
 while ($tall <= 10)
   {
     $kvadraten = $tall * $tall;
-    print("$tall $kvadraten <br/>");
+    print("$tall har kvadraten $kvadraten <br/>");
     $tall ++;
   }
 
