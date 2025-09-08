@@ -1,6 +1,6 @@
 <?php
 
-$tall = 0;
+$tall = 1;
 
 while ($tall <= 10)
   {
