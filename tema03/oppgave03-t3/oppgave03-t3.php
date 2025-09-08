@@ -2,22 +2,22 @@
 
 $tall = 1;
 
-while ($tall <= 10)
-  {
-    print("$tall ");
-    $tall ++;
-    while ($tall >= 10 and $tall <= 20)
-    {
-      print("$tall <br/>");
-      $tall ++;
-      while ($tall >= 20 and $tall <= 30)
-      {
-        print("$tall <br/>");
-        $tall ++;
-      }
-      print("<br/>");
-    }
-    print("<br/>");
-  }
-print("<br/>");
+for($tall<=10; $tall++)
+{
+  print("$tall ")
+}
+print("<br/> ")
+
+for($tall<=20; $tall++)
+{
+  print("$tall ")
+}
+print("<br/> ")
+
+for($tall<=30; $tall++)
+{
+  print("$tall ")
+}
+print("<br/> ")
+
 ?>
