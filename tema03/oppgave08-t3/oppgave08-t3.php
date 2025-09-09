@@ -10,14 +10,14 @@ $tallarray = [$tall1, $tall2, $tall3, $tall4, $tall5];
 
 for ($i = 0; $i <= 4; $i++)
 {
-  print($tallarray[$i] " ");
+  print($tallarray[$i] . " ");
 }
 
 print("<br/>");
 
 for ($i = 4; $i >= 0; $i--)
 {
-  print($tallarray[$i] " ");
+  print($tallarray[$i] . " ");
 }
 
 ?>
