@@ -2,10 +2,9 @@
 
 $tall=$_POST["tall"];
 
-for ($i; $i <= $tall)
+for ($i; $i <= $tall; $i ++)
   {
     print("$tall <br/>");
-    $i ++;
   }
 
 ?>
