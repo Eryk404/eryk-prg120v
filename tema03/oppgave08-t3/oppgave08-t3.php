@@ -13,7 +13,7 @@ for ($i = 0; $i <= 4; $i++)
   print($tallarray[$i] );
 }
 
-print("<br/>")
+print("<br/>");
 
 for ($i = 4; $i >= 0; $i--)
 {
