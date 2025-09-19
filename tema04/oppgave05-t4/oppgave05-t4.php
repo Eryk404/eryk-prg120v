@@ -1,21 +1,28 @@
 <?php
 
-$postnummer=$_POST["postnummer"];
+$klassekode = $_POST["klassekode"];
 
-if ($postnummer)
-  {
-    if (ctype_digit($postnummer))
-      if (strlen($postnummer) == 4)
-        print("$postnummer <br/>");
-      else{
-        print("Et postnummer må bestå av nøyaktig fire sifre.");
-      }
-    else {
-      print ("Postnummeret må kun inneholde tall <br/>");
+function validerKlassekode($klassekode) {
+    if (empty($klassekode)) {
+        return "Du må oppgi et klassekode <br/>";
     }
-  }
-else if (!$postnummer){
-  print ("Du må oppgi et postnummer <br/>");
+    
+    if (strlen($klassekode) != 3) {
+        return "Et klassekode må bestå av nøyaktig tre tegn <br/>";
+    }
+    
+    $bokstav01 = $klassekode[0];
+    $bokstav02 = $klassekode[1];
+    $tall01 = $klassekode[2];
+
+    if (ctype_alpha($bokstav01) && ctype_alpha($bokstav02) && ctype_digit($tall01)) {
+        return "Klassekoden er $klassekode <br/>";
+    } else {
+        return "Et klassekode må bestå av to bokstaver og ett tall <br/>";
+    }
 }
+
+$result = validerKlassekode($klassekode);
+print($result);
 
 ?>
