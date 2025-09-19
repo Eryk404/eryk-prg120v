@@ -1,25 +1,21 @@
 <?php
 
-$klassekode=$_POST["klassekode"];
+$klassekode = $_POST["klassekode"]; 
 
-$bokstav01 = $klassekode[0];
-$bokstav02 = $klassekode[1];
-$tall01 = $klassekode[2];
+if (empty($klassekode)) {
+    print("Du må oppgi et klassekode <br/>");
+} else if (strlen($klassekode) == 3) {
+    $bokstav01 = $klassekode[0];
+    $bokstav02 = $klassekode[1];
+    $tall01 = $klassekode[2];
 
-if ($klassekode)
-  {
-    if (ctype_alpha($bokstav01) && ctype_alpha($bokstav02) && ctype_digit($tall01))
-      if (strlen($klassekode) == 3)
+    if (ctype_alpha($bokstav01) && ctype_alpha($bokstav02) && ctype_digit($tall01)) {
         print("Klassekoden er $klassekode <br/>");
-      else{
+    } else {
         print("Et klassekode må bestå av to bokstaver og ett tall <br/>");
-      }
-    else {
-      print ("Et klassekode må bestå nøyaktig to bokstaver og ett tall <br/>");
     }
-  }
-else if (!$klassekode){
-  print ("Du må oppgi et klassekode <br/>");
+} else {
+    print("Et klassekode må bestå av nøyaktig to bokstaver og ett tall <br/>");
 }
 
 ?>
