@@ -9,12 +9,12 @@ if (empty($emnekode)) {
     $bokstav02 = $emnekode[1];
     $bokstav03 = $emnekode[2];
     $tall01 = $emnekode[3];
-    $tall01 = $emnekode[4];
-    $tall01 = $emnekode[5];
+    $tall02 = $emnekode[4];
+    $tall03 = $emnekode[5];
     $bokstav04 = $emnekode[6];
 
     if (ctype_alpha($bokstav01) && ctype_alpha($bokstav02) && ctype_alpha($bokstav03) && ctype_alpha($bokstav04) && ctype_digit($tall01) && ctype_digit($tall02) && ctype_digit($tall03)) {
-        print("Emnekoden er $klassekode <br/>");
+        print("Emnekoden er $emnekode <br/>");
     } else {
         print("Et emnekoden må bestå av fire bokstaver og tre tall <br/>");
     }
