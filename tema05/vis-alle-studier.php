@@ -5,7 +5,7 @@
     <!-- Metadata section for page settings and resources -->
     <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrer studium</title>
+    <title>Vis ale studium</title>
 
     </head>
 
