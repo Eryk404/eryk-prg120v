@@ -88,15 +88,10 @@
     <!-- Form for collecting user input -->
     <form method="post" action="" id="registrerStudiumSkjema" name="registrerStudiumSkjema">
 
-    <!-- Klassekode field -->
-    <label for="Klassekode">Klassekode</label> 
-    <input type="text" id="klassekode" name="klassekode" placeholder="Skriv in et klassekode" />
-
+    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn en studiumkode" /> <br/>
+    <input type="text" id="studiumnavn" name="studiumnavn" required placeholder="Skriv inn en studiumnavn" /> <br/>
 
     <!-- Submit and reset buttons -->
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv in et studiumkode" /> <br/>
-    <input type="text" id="studiumnavn" name="studiumnavn" required placeholder="Skriv in et studiumnavn" /> <br/>
-
     <input type="submit" value="Registrer studium" id="registrerStudiumKnapp" name="registrerStudiumKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
