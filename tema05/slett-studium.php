@@ -82,6 +82,8 @@
 
 <body>
 
+    <script src="funksjoner.js"> </script>
+
     <!-- Visible content of the page -->
     <h3>Registrer studium</h3>
 
@@ -105,34 +107,14 @@
 
 if (isset($_POST ["slettStudiumSkjema"]))
 {
-    $studiumkode=$_POST ["studiumkode"];
-    $studiumnavn=$_POST ["studiumnavn"];
-
-    if (!$studiumkode || !$studiumnavn)
-    {
-        print ("Alle felt m&aring; fylles ut");
-    }
-    else
-    {
-        include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+  include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
         
-        $sqlSetning="SELECT * FROM studium WHERE studiumkode='$studiumkode';";
-        $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
-        $antallRader=mysqli_num_rows($sqlResultat);
+  $studiumkode =$_POST["studiumkode"]
 
-    if ($antallRader!=0)
-    {
-        print ("Det er ingenting i databasen, eller det ble tidligere slettet.");
-    }
-    else
-    {
-        $sqlSetning="DELETE studium (studiumkode,studiumnavn)
-        VALUES('$studiumkode','$studiumnavn');";
-        mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
-        /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende studium er n&aring; sletter: $studiumkode $studiumnavn");
-    }
-  }
+  $sqlSetning="DELETE FROM studium WHERE studiumkode='$studiumkode';";
+  mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+  print ("F&oslash;lgende studium er n&aring; sletter: $studiumkode $studiumnavn");
+    
 }
 
 ?>
