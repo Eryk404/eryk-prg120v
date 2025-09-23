@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slett studium</title>
   <style>
-
     /* Styling for the entire page */
     body {
       font-family: Arial, sans-serif;
@@ -75,27 +73,18 @@
     input[type="reset"]:hover {
       opacity: 0.9;
     }
-
   </style>
-
 </head>
-
 <body>
+  <!-- Visible content of the page -->
+  <h3>Slett studium</h3>
 
-    <script src="funksjoner.js"> </script>
-
-    <!-- Visible content of the page -->
-    <h3>Registrer studium</h3>
-
-    <!-- Form for collecting user input -->
-    <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema">
-
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv in et studiumkode" /> <br/>
-
+  <!-- Form for collecting user input -->
+  <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema">
+    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett studium" id="slettStudiumSkjema" name="slettStudiumSkjema" />
+    <input type="submit" value="Slett studium" id="slettStudiumKnapp" name="slettStudiumKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
-
   </form>
 
 </body>
@@ -103,17 +92,31 @@
 </html>
 
 <?php
-
-if (isset($_POST ["slettStudiumSkjema"]))
-{
+if (isset($_POST["slettStudiumKnapp"])) {
   include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-        
-  $studiumkode =$_POST["studiumkode"];
+  
+  $studiumkode = $_POST["studiumkode"];
 
-  $sqlSetning="DELETE FROM studium WHERE studiumkode='$studiumkode';";
-  mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-  print ("F&oslash;lgende studium er n&aring; slettet: $studiumkode <br/> ");
-    
+  if (!$studiumkode) {
+    print("Studiumkode må fylles ut.");
+  } else {
+    // Check if the study program exists
+    $sqlSetning = "SELECT studiumkode, studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
+    $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+    $antallRader = mysqli_num_rows($sqlResultat);
+
+    if ($antallRader == 0) {
+      print("Studium med kode $studiumkode finnes ikke i databasen.");
+    } else {
+      // Fetch the study name
+      $rad = mysqli_fetch_array($sqlResultat);
+      $studiumnavn = $rad["studiumnavn"];
+
+      // Delete the study program
+      $sqlSetning = "DELETE FROM studium WHERE studiumkode='$studiumkode';";
+      mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
+      print("Følgende studium er nå slettet: $studiumkode - $studiumnavn");
+    }
+  }
 }
-
 ?>
