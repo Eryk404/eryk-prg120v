@@ -106,31 +106,29 @@
 if (isset($_POST ["slettStudiumKnapp"]))
 {
     $studiumkode=$_POST ["studiumkode"];
-    $studiumnavn=$_POST ["studiumnavn"];
 
-    if (!$studiumkode || !$studiumnavn)
+    if (!$studiumkode)
     {
-        print ("Alle felt å fylles ut");
+        print ("Alle felt må fylles ut");
     }
     else
     {
         include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
         
-        $sqlSetning="SELECT * FROM studium WHERE studiumkode= ? AND studiumnavn = ?";
+        $sqlSetning="SELECT * FROM studium WHERE studiumkode='$studiumkode';";
         $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig å hente data fra databasen");
         $antallRader=mysqli_num_rows($sqlResultat);
 
-    if ($antallRader!=0) /* studiet er registrert fra før */
+    if ($antallRader==0) /* studiet er ikke registrert */
     {
-        print ("Studiet er registrert fra forslag");
+        print ("Studiet finnes ikke");
     }
     else
     {
-        $sqlSetning="DELETE FROM studium WHERE (studiumkode,studiumnavn)
-        VALUES('$studiumkode','$studiumnavn');";
+        $sqlSetning="DELETE FROM studium WHERE studiumkode='$studiumkode';";
         mysqli_query($db,$sqlSetning) or die ("ikke mulig å slette data i databasen");
         /* SQL-setning sendt til database-serveren */
-        print ("Følgende studium er nå slettet: $studiumkode $studiumnavn");
+        print ("Føgende studium er nå slettet: $studiumkode <br />");
     }
   }
 }
