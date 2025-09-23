@@ -121,9 +121,9 @@ if (isset($_POST["slettEmneKnapp"])) {
         $emnenavn = $rad["emnenavn"];
 
         // Delete the study program
-        $sqlSetning = "DELETE FROM studium WHERE emnekode='$emnekode';";
+        $sqlSetning = "DELETE FROM emne WHERE emnekode='$emnekode';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
-        print("Følgende studium er nå slettet: $emnekode - $emnenavn - $studiumkode");
+        print("Følgende emne er nå slettet: $emnekode - $emnenavn - $studiumkode");
     }
   }
 }
