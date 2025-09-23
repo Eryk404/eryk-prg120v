@@ -113,7 +113,7 @@ if (isset($_POST ["slettStudiumSkjema"]))
 
   $sqlSetning="DELETE FROM studium WHERE studiumkode='$studiumkode';";
   mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-  print ("F&oslash;lgende studium er n&aring; sletter: $studiumkode $studiumnavn");
+  print ("F&oslash;lgende studium er n&aring; slettet: $studiumkode <br/> ");
     
 }
 
