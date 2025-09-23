@@ -87,34 +87,35 @@
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
   </form>
 
-</body>
-
-</html>
-
 <?php
 if (isset($_POST["slettStudiumKnapp"])) {
   include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
   
   $studiumkode = $_POST["studiumkode"];
 
-  if (!$studiumkode) 
-    {
-      print("Studiumkode må fylles ut.");
-    } 
-    else 
-    {
-      // Check if the study program exists
-      $sqlSetning = "SELECT studiumkode, studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
-      $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-      $antallRader = mysqli_num_rows($sqlResultat);
+  if (!$studiumkode) {
+    print("Studiumkode må fylles ut.");
+  } else {
+    // Check if the study program exists
+    $sqlSetning = "SELECT studiumkode, studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
+    $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+    $antallRader = mysqli_num_rows($sqlResultat);
 
-    if ($antallRader == 0) 
-      {
-        print("Studium med kode $studiumkode finnes ikke i databasen.");
-      } 
-      else 
-      {
+    if ($antallRader == 0) {
+      print("Studium med kode $studiumkode finnes ikke i databasen.");
+    } else {
+      // Check for dependent courses in the emne table
+      $sqlSetning = "SELECT COUNT(*) as antall FROM emne WHERE studiumkode='$studiumkode';";
+      $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+      $rad = mysqli_fetch_array($sqlResultat);
+      $antallEmner = $rad["antall"];
+
+      if ($antallEmner > 0) {
+        print("Kan ikke slette studium med kode $studiumkode fordi det er knyttet $antallEmner emne(r) til dette studiet. Slett emnene først.");
+      } else {
         // Fetch the study name
+        $sqlSetning = "SELECT studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
+        $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
         $rad = mysqli_fetch_array($sqlResultat);
         $studiumnavn = $rad["studiumnavn"];
 
@@ -122,7 +123,10 @@ if (isset($_POST["slettStudiumKnapp"])) {
         $sqlSetning = "DELETE FROM studium WHERE studiumkode='$studiumkode';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
         print("Følgende studium er nå slettet: $studiumkode - $studiumnavn");
+      }
     }
   }
 }
 ?>
+</body>
+</html>
