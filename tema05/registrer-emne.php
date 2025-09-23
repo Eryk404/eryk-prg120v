@@ -107,7 +107,7 @@
 if (isset($_POST ["registrerEmneKnapp"]))
 {
     $emnekode=$_POST ["emnekode"];
-    $emnemnavn=$_POST ["emnenavn"];
+    $emnenavn=$_POST ["emnenavn"];
     $studiumkode=$_POST ["studiumkode"];
 
     if (!$emnekode || !$emnemnavn || !$studiumkode)
