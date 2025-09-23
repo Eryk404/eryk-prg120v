@@ -110,7 +110,7 @@ if (isset($_POST ["registrerEmneKnapp"]))
     $emnenavn=$_POST ["emnenavn"];
     $studiumkode=$_POST ["studiumkode"];
 
-    if (!$emnekode || !$emnemnavn || !$studiumkode)
+    if (!$emnekode || !$emnenavn || !$studiumkode)
     {
         print ("Alle felt m&aring; fylles ut");
     }
