@@ -4,7 +4,7 @@
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slett emner</title>
+  <title>Slett emne</title>
   <style>
     /* Styling for the entire page */
     body {
@@ -77,21 +77,15 @@
 </head>
 <body>
   <!-- Visible content of the page -->
-  <h3>Slett emner</h3>
+  <h3>Slett emne</h3>
 
   <!-- Form for collecting user input -->
-  <form method="post" action="" id="registrerEmneSkjema" name="registrerEmneSkjema">
+  <form method="post" action="" id="slettEmneSkjema" name="slettEmneSkjema">
     <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv inn et emnekode" /> <br/>
-    <input type="text" id="emnenavn" name="emnenavn" required placeholder="Skriv inn et emnenavn" /> <br/>
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Registrer emne" id="registrerEmneKnapp" name="registrerEmneKnapp" />
+    <input type="submit" value="Slett emne" id="slettEmneKnapp" name="slettEmneKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
   </form>
-
-</body>
-
-</html>
 
 <?php
 if (isset($_POST["slettEmneKnapp"])) {
@@ -99,32 +93,29 @@ if (isset($_POST["slettEmneKnapp"])) {
   
   $emnekode = $_POST["emnekode"];
 
-  if (!$emnekode) 
-    {
-      print("Emnekoden $emnekode finnes ikke i databasen. Vennligst registrer studiet først.");
-    } 
-    else 
-    {
-       // Check if emnekode exists in emne table
-        $sqlSetning = "SELECT * FROM emne WHERE emnekode='$emnekode';";
-        $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-        $antallRaderEmne = mysqli_num_rows($sqlResultat);
+  if (!$emnekode) {
+    print("Emnekode må fylles ut.");
+  } else {
+    // Check if emnekode exists in emne table
+    $sqlSetning = "SELECT emnekode, emnenavn, studiumkode FROM emne WHERE emnekode='$emnekode';";
+    $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+    $antallRaderEmne = mysqli_num_rows($sqlResultat);
 
-    if ($antallRader == 0) 
-      {
-        print("Emne med kode $emnekode finnes ikke i databasen.");
-      } 
-      else 
-      {
-        // Fetch the study name
-        $rad = mysqli_fetch_array($sqlResultat);
-        $emnenavn = $rad["emnenavn"];
+    if ($antallRaderEmne == 0) {
+      print("Emne med kode $emnekode finnes ikke i databasen.");
+    } else {
+      // Fetch the course details
+      $rad = mysqli_fetch_array($sqlResultat);
+      $emnenavn = $rad["emnenavn"];
+      $studiumkode = $rad["studiumkode"];
 
-        // Delete the study program
-        $sqlSetning = "DELETE FROM emne WHERE emnekode='$emnekode';";
-        mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
-        print("Følgende emne er nå slettet: $emnekode - $emnenavn - $studiumkode");
+      // Delete the course
+      $sqlSetning = "DELETE FROM emne WHERE emnekode='$emnekode';";
+      mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
+      print("Følgende emne er nå slettet: $emnekode - $emnenavn (Studiumkode: $studiumkode)");
     }
   }
 }
 ?>
+</body>
+</html>
