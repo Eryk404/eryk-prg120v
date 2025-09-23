@@ -81,7 +81,7 @@
 </head>
 
 <body>
-    
+
     <!-- Visible content of the page -->
     <h3>Registrer studium</h3>
 
@@ -94,8 +94,8 @@
 
 
     <!-- Submit and reset buttons -->
-    <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
-    <input type="text" id="studiumnavn" name="studiumnavn" required /> <br/>
+    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv in et studiumkode" /> <br/>
+    <input type="text" id="studiumnavn" name="studiumnavn" required placeholder="Skriv in et studiumnavn" /> <br/>
 
     <input type="submit" value="Registrer studium" id="registrerStudiumKnapp" name="registrerStudiumKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
