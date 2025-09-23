@@ -91,7 +91,6 @@
     <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema">
 
     <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv in et studiumkode" /> <br/>
-    <input type="text" id="studiumnavn" name="studiumnavn" required placeholder="Skriv in et studiumnavn" /> <br/>
 
     <!-- Submit and reset buttons -->
     <input type="submit" value="Slett studium" id="slettStudiumSkjema" name="slettStudiumSkjema" />
