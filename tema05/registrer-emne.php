@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrer emne</title>
   <style>
-
     /* Styling for the entire page */
     body {
       font-family: Arial, sans-serif;
@@ -75,67 +73,57 @@
     input[type="reset"]:hover {
       opacity: 0.9;
     }
-
   </style>
-
 </head>
-
 <body>
+  <!-- Visible content of the page -->
+  <h3>Registrer emne</h3>
 
-    <!-- Visible content of the page -->
-    <h3>Registrer emne</h3>
-
-    <!-- Form for collecting user input -->
-    <form method="post" action="" id="registrerEmneSkjema" name="registrerEmneSkjema">
-
-    <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv in et emnekode" /> <br/>
-    <input type="text" id="emnenavn" name="emnenavn" required placeholder="Skriv in et emnenavn" /> <br/>
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv in et studiumkode" /> <br/>
-
+  <!-- Form for collecting user input -->
+  <form method="post" action="" id="registrerEmneSkjema" name="registrerEmneSkjema">
+    <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv inn et emnekode" /> <br/>
+    <input type="text" id="emnenavn" name="emnenavn" required placeholder="Skriv inn et emnenavn" /> <br/>
+    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
     <!-- Submit and reset buttons -->
     <input type="submit" value="Registrer emne" id="registrerEmneKnapp" name="registrerEmneKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
-
   </form>
 
-</body>
-
-</html>
-
 <?php
+if (isset($_POST["registrerEmneKnapp"])) {
+    $emnekode = $_POST["emnekode"];
+    $emnenavn = $_POST["emnenavn"];
+    $studiumkode = $_POST["studiumkode"];
 
-if (isset($_POST ["registrerEmneKnapp"]))
-{
-    $emnekode=$_POST ["emnekode"];
-    $emnenavn=$_POST ["emnenavn"];
-    $studiumkode=$_POST ["studiumkode"];
+    if (!$emnekode || !$emnenavn || !$studiumkode) {
+        print("Alle felt må fylles ut.");
+    } else {
+        include("db-tilkobling.php");
 
-    if (!$emnekode || !$emnenavn || !$studiumkode)
-    {
-        print ("Alle felt m&aring; fylles ut");
-    }
-    else
-    {
-        include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-        
-        $sqlSetning="SELECT * FROM emne WHERE emnekode='$emnekode';";
-        $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
-        $antallRader=mysqli_num_rows($sqlResultat);
+        // Check if studiumkode exists in studium table
+        $sqlSetning = "SELECT * FROM studium WHERE studiumkode='$studiumkode';";
+        $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+        $antallRaderStudium = mysqli_num_rows($sqlResultat);
 
-    if ($antallRader!=0) /* Emnet er registrert fra før */
-    {
-        print ("Emnet er registrert fra forslag");
+        if ($antallRaderStudium == 0) {
+            print("Studiumkoden $studiumkode finnes ikke i databasen. Vennligst registrer studiet først.");
+        } else {
+            // Check if emnekode already exists
+            $sqlSetning = "SELECT * FROM emne WHERE emnekode='$emnekode';";
+            $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+            $antallRader = mysqli_num_rows($sqlResultat);
+
+            if ($antallRader != 0) {
+                print("Emnet med kode $emnekode er allerede registrert.");
+            } else {
+                // Insert the new course
+                $sqlSetning = "INSERT INTO emne (emnekode, emnenavn, studiumkode) VALUES ('$emnekode', '$emnenavn', '$studiumkode');";
+                mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere data i databasen");
+                print("Følgende emne er nå registrert: $emnekode $emnenavn (Studiumkode: $studiumkode)");
+            }
+        }
     }
-    else
-    {
-        $sqlSetning="INSERT INTO emne (emnekode,emnenavn,studiumkode)
-        VALUES('$emnekode','$emnenavn','$studiumkode');";
-        mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
-        /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende studium er n&aring; registrert: $emnekode $emnenavn $studiumkode");
-    }
-  }
 }
-
-
 ?>
+</body>
+</html>
