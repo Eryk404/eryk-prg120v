@@ -110,14 +110,14 @@ if (isset($_POST ["registrerStudiumKnapp"]))
 
     if (!$studiumkode || !$studiumnavn)
     {
-        print ("Alle felt m&aring; fylles ut");
+        print ("Alle felt å fylles ut");
     }
     else
     {
         include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
         
         $sqlSetning="SELECT * FROM studium WHERE studiumkode='$studiumkode';";
-        $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+        $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig å hente data fra databasen");
         $antallRader=mysqli_num_rows($sqlResultat);
 
     if ($antallRader!=0) /* studiet er registrert fra før */
@@ -128,9 +128,9 @@ if (isset($_POST ["registrerStudiumKnapp"]))
     {
         $sqlSetning="INSERT INTO studium (studiumkode,studiumnavn)
         VALUES('$studiumkode','$studiumnavn');";
-        mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
+        mysqli_query($db,$sqlSetning) or die ("ikke mulig å registrere data i databasen");
         /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende studium er n&aring; registrert: $studiumkode $studiumnavn");
+        print ("Følgende studium er å registrert: $studiumkode $studiumnavn");
     }
   }
 }
