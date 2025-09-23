@@ -105,10 +105,10 @@ if (isset($_POST["slettEmneKnapp"])) {
     } 
     else 
     {
-       // Check if emnekode exists in studium table
-        $sqlSetning = "SELECT * FROM studium WHERE emnekode='$emnekode';";
+       // Check if emnekode exists in emne table
+        $sqlSetning = "SELECT * FROM emne WHERE emnekode='$emnekode';";
         $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-        $antallRaderStudium = mysqli_num_rows($sqlResultat);
+        $antallRaderEmne = mysqli_num_rows($sqlResultat);
 
     if ($antallRader == 0) 
       {
