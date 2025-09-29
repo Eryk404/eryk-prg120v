@@ -49,6 +49,15 @@
       border-radius: 4px;
     }
 
+    /* Styling for select dropdown */
+    select {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
     /* Styling for submit and reset buttons */
     input[type="submit"],
     input[type="reset"] {
@@ -81,9 +90,13 @@
 
   <!-- Form for collecting user input -->
   <form method="post" action="" id="registrerEmneSkjema" name="registrerEmneSkjema">
-    <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv inn et emnekode" /> <br/>
-    <input type="text" id="emnenavn" name="emnenavn" required placeholder="Skriv inn et emnenavn" /> <br/>
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
+    Emnekode <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv inn et emnekode" /> <br/>
+    Emnenavn <input type="text" id="emnenavn" name="emnenavn" required placeholder="Skriv inn et emnenavn" /> <br/>
+    Studiumkode
+    <select name="studiumkode" id="studiumkode" required>
+      <option value="">velg studium</option>
+      <?php include("dynamiske-funksjoner.php"); listeboksStudiumkode(); ?>
+    </select> <br/>
     <!-- Submit and reset buttons -->
     <input type="submit" value="Registrer emne" id="registrerEmneKnapp" name="registrerEmneKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
