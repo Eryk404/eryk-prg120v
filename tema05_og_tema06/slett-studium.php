@@ -5,6 +5,7 @@
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slett studium</title>
+  <script src="funksjoner.js"></script>
   <style>
     /* Styling for the entire page */
     body {
@@ -39,9 +40,8 @@
       text-align: center;
     }
 
-    /* Styling for text and number input fields */
-    input[type="text"],
-    input[type="number"] {
+    /* Styling for select dropdown */
+    select {
       width: 90%;
       padding: 10px;
       margin-bottom: 15px;
@@ -80,8 +80,12 @@
   <h3>Slett studium</h3>
 
   <!-- Form for collecting user input -->
-  <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema">
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
+  <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema" onSubmit="return bekreft()">
+    Studium
+    <select name="studiumkode" id="studiumkode" required>
+      <option value="">velg studium</option>
+      <?php include("dynamiske-funksjoner.php"); listeboksStudiumkode(); ?>
+    </select> <br/>
     <!-- Submit and reset buttons -->
     <input type="submit" value="Slett studium" id="slettStudiumKnapp" name="slettStudiumKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
@@ -94,7 +98,7 @@ if (isset($_POST["slettStudiumKnapp"])) {
   $studiumkode = $_POST["studiumkode"];
 
   if (!$studiumkode) {
-    print("Studiumkode må fylles ut.");
+    print("Det er ikke valgt noe studium.");
   } else {
     // Check if the study program exists
     $sqlSetning = "SELECT studiumkode, studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
