@@ -5,6 +5,7 @@
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slett emne</title>
+  <script src="funksjoner.js"></script>
   <style>
     /* Styling for the entire page */
     body {
@@ -39,9 +40,8 @@
       text-align: center;
     }
 
-    /* Styling for text and number input fields */
-    input[type="text"],
-    input[type="number"] {
+    /* Styling for select dropdown */
+    select {
       width: 90%;
       padding: 10px;
       margin-bottom: 15px;
@@ -80,8 +80,12 @@
   <h3>Slett emne</h3>
 
   <!-- Form for collecting user input -->
-  <form method="post" action="" id="slettEmneSkjema" name="slettEmneSkjema">
-    <input type="text" id="emnekode" name="emnekode" required placeholder="Skriv inn et emnekode" /> <br/>
+  <form method="post" action="" id="slettEmneSkjema" name="slettEmneSkjema" onSubmit="return bekreft()">
+    Emne
+    <select name="emnekode" id="emnekode" required>
+      <option value="">velg emne</option>
+      <?php include("dynamiske-funksjoner.php"); listeboksEmnekode(); ?>
+    </select> <br/>
     <!-- Submit and reset buttons -->
     <input type="submit" value="Slett emne" id="slettEmneKnapp" name="slettEmneKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
@@ -94,7 +98,7 @@ if (isset($_POST["slettEmneKnapp"])) {
   $emnekode = $_POST["emnekode"];
 
   if (!$emnekode) {
-    print("Emnekode må fylles ut.");
+    print("Det er ikke valgt noe emne.");
   } else {
     // Check if emnekode exists in emne table
     $sqlSetning = "SELECT emnekode, emnenavn, studiumkode FROM emne WHERE emnekode='$emnekode';";
