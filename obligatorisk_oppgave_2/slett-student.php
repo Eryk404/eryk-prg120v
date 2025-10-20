@@ -84,7 +84,7 @@
     <h3>Slett student</h3>
 
     <!-- Form for collecting user input -->
-    <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema">
 
     <select id="brukernavn" name="brukernavn" required>
         <option value="">Velg brukernavn</option>
@@ -103,7 +103,7 @@
     </select> <br/>
 
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" />
+    <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" onclick="return bekreft()" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
   </form>

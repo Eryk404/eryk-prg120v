@@ -84,7 +84,7 @@
     <h3>Slett klasse</h3>
 
     <!-- Form for collecting user input -->
-    <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema">
 
     <select id="klassekode" name="klassekode" required>
         <option value="">Velg klassekode</option>
@@ -103,7 +103,7 @@
     </select> <br/>
 
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" />
+    <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" onclick="return bekreft()" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
   </form>
