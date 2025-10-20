@@ -74,8 +74,18 @@
       opacity: 0.9;
     }
 
+    /* Styling for messages */
+    .message {
+      text-align: center;
+      margin-top: 10px;
+    }
+
   </style>
-  <script src="obligatorisk_oppgave_2/bekfreft.js"></script>
+  <script>
+    function bekreft() {
+      return confirm("Er du sikker?");
+    }
+  </script>
 </head>
 
 <body>
@@ -84,7 +94,7 @@
     <h3>Slett student</h3>
 
     <!-- Form for collecting user input -->
-    <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema">
 
     <select id="brukernavn" name="brukernavn" required>
         <option value="">Velg brukernavn</option>
@@ -103,7 +113,7 @@
     </select> <br/>
 
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" />
+    <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" onclick="return bekreft()" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
   </form>
@@ -115,7 +125,7 @@ if (isset($_POST ["slettStudentKnapp"]))
 
     if (!$brukernavn)
     {
-        print ("Alle felt m&aring; fylles ut");
+        print ("<div class='message'>Alle felt m&aring; fylles ut</div>");
     }
     else
     {
@@ -127,14 +137,14 @@ if (isset($_POST ["slettStudentKnapp"]))
 
     if ($antallRader==0) /* studenten er ikke registrert */
     {
-        print ("Studenten finnes ikke");
+        print ("<div class='message'>Studenten finnes ikke</div>");
     }
     else
     {
         $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn';";
         mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
         /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende student er n&aring; slettet: $brukernavn <br />");
+        print ("<div class='message'>F&oslash;lgende student er n&aring; slettet: $brukernavn <br /></div>");
     }
   }
 }

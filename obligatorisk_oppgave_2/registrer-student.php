@@ -84,6 +84,12 @@
       opacity: 0.9;
     }
 
+    /* Styling for messages */
+    .message {
+      text-align: center;
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 
@@ -135,7 +141,7 @@ if (isset($_POST ["registrerStudentKnapp"]))
 
     if (!$brukernavn || !$fornavn || !$etternavn || !$klassekode)
     {
-        print ("Alle felt m&aring; fylles ut");
+        print ("<div class='message'>Alle felt m&aring; fylles ut</div>");
     }
     else
     {
@@ -147,7 +153,7 @@ if (isset($_POST ["registrerStudentKnapp"]))
 
     if ($antallRader!=0) /* studenten er registrert fra før */
     {
-        print ("Studenten er registrert fra f&oslash;r");
+        print ("<div class='message'>Studenten er registrert fra f&oslash;r</div>");
     }
     else
     {
@@ -155,7 +161,7 @@ if (isset($_POST ["registrerStudentKnapp"]))
         VALUES('$brukernavn','$fornavn','$etternavn','$klassekode');";
         mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
         /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende student er n&aring; registrert: $brukernavn $fornavn $etternavn $klassekode");
+        print ("<div class='message'>F&oslash;lgende student er n&aring; registrert: $brukernavn $fornavn $etternavn $klassekode</div>");
     }
   }
 }

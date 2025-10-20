@@ -74,8 +74,18 @@
       opacity: 0.9;
     }
 
+    /* Styling for messages */
+    .message {
+      text-align: center;
+      margin-top: 10px;
+    }
+
   </style>
-  <script src="obligatorisk_oppgave_2/bekfreft.js"></script>
+  <script>
+    function bekreft() {
+      return confirm("Er du sikker?");
+    }
+  </script>
 </head>
 
 <body>
@@ -84,7 +94,7 @@
     <h3>Slett klasse</h3>
 
     <!-- Form for collecting user input -->
-    <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema">
 
     <select id="klassekode" name="klassekode" required>
         <option value="">Velg klassekode</option>
@@ -103,7 +113,7 @@
     </select> <br/>
 
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" />
+    <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" onclick="return bekreft()" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
   </form>
@@ -115,7 +125,7 @@ if (isset($_POST ["slettKlasseKnapp"]))
 
     if (!$klassekode)
     {
-        print ("Alle felt m&aring; fylles ut");
+        print ("<div class='message'>Alle felt m&aring; fylles ut</div>");
     }
     else
     {
@@ -127,7 +137,7 @@ if (isset($_POST ["slettKlasseKnapp"]))
 
     if ($antallRader==0) /* klassen er ikke registrert */
     {
-        print ("Klassen finnes ikke");
+        print ("<div class='message'>Klassen finnes ikke</div>");
     }
     else
     {
@@ -138,14 +148,14 @@ if (isset($_POST ["slettKlasseKnapp"]))
 
         if ($antallStudenter > 0)
         {
-            print ("Kan ikke slette klasse med studenter i");
+            print ("<div class='message'>Kan ikke slette klasse med studenter i</div>");
         }
         else
         {
             $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
             mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
             /* SQL-setning sendt til database-serveren */
-            print ("F&oslash;lgende klasse er n&aring; slettet: $klassekode <br />");
+            print ("<div class='message'>F&oslash;lgende klasse er n&aring; slettet: $klassekode <br /></div>");
         }
     }
   }
