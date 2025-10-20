@@ -75,7 +75,7 @@
     }
 
   </style>
-  <script src="bekreft.js"></script>
+  <script src="obligatorisk_oppgave_2/bekfreft.js"></script>
 </head>
 
 <body>
