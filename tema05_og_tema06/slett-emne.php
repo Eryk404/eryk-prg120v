@@ -4,7 +4,8 @@
   <!-- Metadata section for page settings and resources -->
   <meta charset="UTF-8"> <!-- Supports special characters like æ, ø, å -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slett studium</title>
+  <title>Slett emne</title>
+  <script src="funksjoner.js"></script>
   <style>
     /* Styling for the entire page */
     body {
@@ -39,9 +40,8 @@
       text-align: center;
     }
 
-    /* Styling for text and number input fields */
-    input[type="text"],
-    input[type="number"] {
+    /* Styling for select dropdown */
+    select {
       width: 90%;
       padding: 10px;
       margin-bottom: 15px;
@@ -77,53 +77,46 @@
 </head>
 <body>
   <!-- Visible content of the page -->
-  <h3>Slett studium</h3>
+  <h3>Slett emne</h3>
 
   <!-- Form for collecting user input -->
-  <form method="post" action="" id="slettStudiumSkjema" name="slettStudiumSkjema">
-    <input type="text" id="studiumkode" name="studiumkode" required placeholder="Skriv inn et studiumkode" /> <br/>
+  <form method="post" action="" id="slettEmneSkjema" name="slettEmneSkjema" onSubmit="return bekreft()">
+    Emne
+    <select name="emnekode" id="emnekode" required>
+      <option value="">velg emne</option>
+      <?php include("dynamiske-funksjoner.php"); listeboksEmnekode(); ?>
+    </select> <br/>
     <!-- Submit and reset buttons -->
-    <input type="submit" value="Slett studium" id="slettStudiumKnapp" name="slettStudiumKnapp" />
+    <input type="submit" value="Slett emne" id="slettEmneKnapp" name="slettEmneKnapp" />
     <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
   </form>
 
 <?php
-if (isset($_POST["slettStudiumKnapp"])) {
+if (isset($_POST["slettEmneKnapp"])) {
   include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
   
-  $studiumkode = $_POST["studiumkode"];
+  $emnekode = $_POST["emnekode"];
 
-  if (!$studiumkode) {
-    print("Studiumkode må fylles ut.");
+  if (!$emnekode) {
+    print("Det er ikke valgt noe emne.");
   } else {
-    // Check if the study program exists
-    $sqlSetning = "SELECT studiumkode, studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
+    // Check if emnekode exists in emne table
+    $sqlSetning = "SELECT emnekode, emnenavn, studiumkode FROM emne WHERE emnekode='$emnekode';";
     $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-    $antallRader = mysqli_num_rows($sqlResultat);
+    $antallRaderEmne = mysqli_num_rows($sqlResultat);
 
-    if ($antallRader == 0) {
-      print("Studium med kode $studiumkode finnes ikke i databasen.");
+    if ($antallRaderEmne == 0) {
+      print("Emne med kode $emnekode finnes ikke i databasen.");
     } else {
-      // Check for dependent courses in the emne table
-      $sqlSetning = "SELECT COUNT(*) as antall FROM emne WHERE studiumkode='$studiumkode';";
-      $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+      // Fetch the course details
       $rad = mysqli_fetch_array($sqlResultat);
-      $antallEmner = $rad["antall"];
+      $emnenavn = $rad["emnenavn"];
+      $studiumkode = $rad["studiumkode"];
 
-      if ($antallEmner > 0) {
-        print("Kan ikke slette studium med kode $studiumkode fordi det er knyttet $antallEmner emne(r) til dette studiet. Slett emnene først.");
-      } else {
-        // Fetch the study name
-        $sqlSetning = "SELECT studiumnavn FROM studium WHERE studiumkode='$studiumkode';";
-        $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-        $rad = mysqli_fetch_array($sqlResultat);
-        $studiumnavn = $rad["studiumnavn"];
-
-        // Delete the study program
-        $sqlSetning = "DELETE FROM studium WHERE studiumkode='$studiumkode';";
-        mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
-        print("Følgende studium er nå slettet: $studiumkode - $studiumnavn");
-      }
+      // Delete the course
+      $sqlSetning = "DELETE FROM emne WHERE emnekode='$emnekode';";
+      mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
+      print("Følgende emne er nå slettet: $emnekode - $emnenavn (Studiumkode: $studiumkode)");
     }
   }
 }
